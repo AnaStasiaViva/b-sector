@@ -1,0 +1,93 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint"],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"semi": "off",
+		"@typescript-eslint/semi": ["error", "always"],
+		"@typescript-eslint/no-this-alias": "off",
+		"@typescript-eslint/no-empty-interface": [
+			"error",
+			{ "allowSingleExtends": true }
+		],
+		"react/jsx-curly-spacing": [
+			2,
+			{
+				"when": "always",
+				"spacing": { "objectLiterals": "never" }
+			}
+		],
+		"react/jsx-closing-bracket-location": [2, "tag-aligned"],
+		"react/jsx-child-element-spacing": [2],
+		"react/jsx-closing-tag-location": [2],
+		"react/jsx-curly-brace-presence": [
+			2,
+			{ "props": "never", "children": "never" }
+		],
+		"react/jsx-equals-spacing": [2, "never"],
+		"react/jsx-indent-props": [2, 2],
+		"react/jsx-key": [
+			2,
+			{
+				"checkKeyMustBeforeSpread": true,
+				"checkFragmentShorthand": true
+			}
+		],
+		"react/jsx-max-props-per-line": [2, { "maximum": 1 }],
+		"react/jsx-no-bind": [2, { "allowArrowFunctions": true }],
+		"react/jsx-no-comment-textnodes": [2],
+		"react/jsx-no-constructed-context-values": [2],
+		"react/jsx-no-duplicate-props": [2],
+		"react/jsx-no-script-url": [2],
+		"react/jsx-no-target-blank": [2, { "enforceDynamicLinks": "always" }],
+		"react/jsx-no-undef": [2],
+		"react/jsx-no-useless-fragment": [2],
+		"react/jsx-one-expression-per-line": [2, { "allow": "literal" }],
+		"react/jsx-pascal-case": [
+			2,
+			{
+				"allowNamespace": true,
+				"allowLeadingUnderscore": true
+			}
+		],
+		"react/jsx-props-no-multi-spaces": [2],
+		"react/jsx-sort-props": [
+			2,
+			{
+				"ignoreCase": true,
+				"callbacksLast": true,
+				"shorthandLast": true,
+				"noSortAlphabetically": true,
+				"reservedFirst": false
+			}
+		],
+		"react/jsx-tag-spacing": [2],
+		"react/no-children-prop": [
+			2,
+			{
+				"allowFunctions": true
+			}
+		],
+		"react/no-danger-with-children": [2],
+		"react/no-deprecated": [2],
+		"react/no-unescaped-entities": [2],
+		"react/no-unknown-property": [2],
+		"react/prefer-es6-class": [2, "always"],
+		"react/prefer-stateless-function": [2],
+		"react/self-closing-comp": [2],
+		"react/style-prop-object": [2]
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:react/jsx-runtime",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react-hooks/recommended"
+	]
+}

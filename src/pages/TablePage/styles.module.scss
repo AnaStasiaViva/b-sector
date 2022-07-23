@@ -1,0 +1,29 @@
+.tableContainer{
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: center;
+}
+
+.paginationContainer{
+  display: flex;
+
+  div{
+    // flex: 1;
+    // width: 100%;
+    // background: rgb(245, 201, 201);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.searchGroup{
+  display: flex;
+  padding: 0px 30px 0px;
+
+  button{
+    margin-left: 10px;
+  }
+}

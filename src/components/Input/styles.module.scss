@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables.scss';
+
+.input {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: $font-color-secondary;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: $font-weight-sm;
+  font-size: 14px;
+  line-height: 137.69%;
+  padding: 10px;
+
+  &::placeholder{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: $font-weight-sm;
+    font-size: 14px;
+    line-height: 137.69%;
+    color: $font-color-tertiary;
+    padding: 10px;
+  }
+
+  &:read-only{
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

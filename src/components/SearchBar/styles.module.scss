@@ -1,0 +1,21 @@
+@import '../../assets/styles/variables.scss';
+
+.searchContainer{
+  width: 100%;
+  max-width: $search-bar-width;
+  height: 52px;
+  background: $tertiary-color;
+  position: relative;
+
+  @media(max-width: 850px){
+    max-height: 45px;
+   }
+  @media(max-width: 650px){
+    max-height: 40px;
+
+  }
+  @media(max-width: 500px){
+    max-height: 35px;
+  }
+
+}

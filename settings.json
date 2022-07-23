@@ -1,0 +1,20 @@
+{
+	"editor.formatOnSave": true,
+	"eslint.validate": ["typescript", "typescriptreact"],
+	"files.trimTrailingWhitespace": true,
+	"workbench.startupEditor": "newUntitledFile",
+	"files.exclude": {
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"editor.minimap.enabled": false,
+	"git.enableSmartCommit": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"eslint.format.enable": true,
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+}

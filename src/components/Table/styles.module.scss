@@ -1,0 +1,117 @@
+@import '../../assets/styles/variables.scss';
+
+.table {
+  width: 100%;
+  // table-layout: fixed;
+  padding: $table-padding;
+
+  thead{
+    background: $secondary-color;
+    box-shadow: $box-shadow;
+  }
+
+  &tbody {
+    width: 100%;
+    display: grid;
+    grid-template-columns: $table-grid-lg;
+
+    @media(max-width: 850px){
+      grid-template-columns: $table-grid-md;
+
+     }
+    @media(max-width: 650px){
+      grid-template-columns: $table-grid-sm;
+
+    }
+    @media(max-width: 500px){
+      grid-template-columns: $table-grid-ssm;
+    }
+  }
+
+  &tr {
+    width: 100%;
+  }
+
+  & th,
+  & td {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: $font-weight-md;
+    font-size: 17px;
+    color: $font-color-primary;
+
+    @media(max-width: 850px){
+      font-size: 16px;
+      padding: 15px 10px;
+
+     }
+    @media(max-width: 650px){
+      font-size: 14px;
+      padding: 10px 5px;
+
+    }
+    @media(max-width: 500px){
+      font-size: 12px;
+    }
+  }
+
+  & td  div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    span{
+      text-transform: capitalize;
+    }
+  }
+
+  img{
+    width: 10px;
+    height: 10px;
+    object-fit: cover;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.05s ease-out;
+  }
+}
+
+.rotate{
+  transform: rotate(180deg);
+}
+
+
+.tableRow {
+  width: 100%;
+
+  & th,
+  & td {
+    font-weight: $font-weight-md;
+    font-size: 17px;
+    border-bottom: $table-row-border;
+
+    @media(max-width: 850px){
+      font-size: 16px;
+      padding: 15px 10px;
+     }
+    @media(max-width: 650px){
+      font-size: 14px;
+      padding: 10px 5px;
+    }
+    @media(max-width: 500px){
+      font-size: 12px;
+      padding: 5px 5px;
+    }
+  }
+}
+
+.sorting{
+  span{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: $font-weight-mdd;
+    font-size: 14px;
+    line-height: $font-line-height;
+    color: $font-color-secondary;
+  }
+}

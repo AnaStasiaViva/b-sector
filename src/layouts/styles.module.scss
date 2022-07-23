@@ -1,0 +1,8 @@
+@import '../assets/styles/variables.scss';
+
+.container{
+  background: $background;
+  box-shadow: $box-shadow;
+  margin: 50px;
+  padding: 25px;
+}
