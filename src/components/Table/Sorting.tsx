@@ -1,7 +1,6 @@
-
-import styles from './styles.module.scss';
-import Img from '../../assets/images/Group 3.png';
 import { MouseEvent, useRef } from 'react';
+import styles from './styles.module.scss';
+import Img from 'assets/images/arrow.svg';
 import { useOpen } from 'hooks/useOpen';
 
 interface ISorting {

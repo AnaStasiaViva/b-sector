@@ -2,43 +2,43 @@
 
 .table {
   width: 100%;
-  // table-layout: fixed;
   padding: $table-padding;
+  max-height: $table-height;
+  overflow:auto;
+  overflow-x:hidden;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
   thead{
     background: $secondary-color;
     box-shadow: $box-shadow;
   }
 
-  &tbody {
+  tbody {
     width: 100%;
-    display: grid;
-    grid-template-columns: $table-grid-lg;
 
-    @media(max-width: 850px){
-      grid-template-columns: $table-grid-md;
-
-     }
-    @media(max-width: 650px){
-      grid-template-columns: $table-grid-sm;
-
-    }
-    @media(max-width: 500px){
-      grid-template-columns: $table-grid-ssm;
-    }
   }
 
-  &tr {
-    width: 100%;
-  }
-
-  & th,
-  & td {
+  td {
     padding: 20px 15px;
-    text-align: left;
     font-weight: $font-weight-md;
     font-size: 17px;
     color: $font-color-primary;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &:first-child{
+      display: flex;
+      justify-content: center;
+      align-items: center
+    }
 
     @media(max-width: 850px){
       font-size: 16px;
@@ -57,7 +57,6 @@
 
   & td  div{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
 
@@ -84,11 +83,31 @@
 .tableRow {
   width: 100%;
 
-  & th,
+  display: grid;
+  grid-template-columns: $table-grid-lg;
+
+  @media(max-width: 850px){
+    grid-template-columns: $table-grid-md;
+
+   }
+  @media(max-width: 650px){
+    grid-template-columns: $table-grid-sm;
+
+  }
+  @media(max-width: 500px){
+    grid-template-columns: $table-grid-ssm;
+  }
+
+
   & td {
     font-weight: $font-weight-md;
     font-size: 17px;
     border-bottom: $table-row-border;
+    border-left: $table-row-border;
+
+    &:last-child{
+      border-right: $table-row-border;
+    }
 
     @media(max-width: 850px){
       font-size: 16px;

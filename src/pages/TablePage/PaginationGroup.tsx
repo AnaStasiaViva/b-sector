@@ -20,24 +20,19 @@ export function PaginationGroup({ pageState, onChange, total }: IPaginationGroup
   });
 
   const handleCLick = (e: MouseEvent<HTMLElement>) => {
-
-    if ( (e.target as HTMLElement).id === 'prev') {
-      if (pageLimit.min <= 1) return;
-
-      setPageLimit({
-        min: pageLimit.min - 5,
-        max: pageLimit.min
-      });
-
-    } else {
-      if (pageLimit.max >= total ) return;
-
-      setPageLimit({
-        min: pageLimit.max,
-        max: pageLimit.max + 5
-      });
-
-    }
+    (e.target as HTMLElement).id === 'prev' && pageLimit.min > 1
+      ?
+      setPageLimit((prev) => ({
+        min: prev.min - 5,
+        max: prev.min
+      }))
+      :
+      pageLimit.max < total
+      &&
+      setPageLimit((prev) => ({
+        min: prev.max,
+        max: prev.max + 5
+      }));
   };
 
   const handleClickPaginate = (e: MouseEvent<HTMLElement>) => {

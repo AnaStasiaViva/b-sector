@@ -22,13 +22,15 @@ $table-row-height: 56px;
 $font-line-height: 137.69%;
 
 //TABLE GRID SIZE
-$table-grid-lg: 75px 1.5fr 2fr;
-$table-grid-md: 65px 1.5fr 2fr;
-$table-grid-sm: 55px 1.5fr 2fr;
+$table-grid-lg: 125px 1.5fr 2fr;
+$table-grid-md: 85px 1.5fr 2fr;
+$table-grid-sm: 65px 1.5fr 2fr;
 $table-grid-ssm: 45px 1.5fr 2fr;
 
-$table-padding: 30px 30px 50px;
+$table-padding: 0px 30px 10px;
 
 $search-bar-width: 631px;
 
 $table-row-border:  1px solid #E3E6EC;
+
+$table-height: 670px;

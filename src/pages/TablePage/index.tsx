@@ -1,21 +1,23 @@
-
+import styles from './styles.module.scss';
 import { ErrorMessage } from 'components';
 import { Button } from 'components/Button';
 import { SearchBar } from 'components/SearchBar';
 import { Spinner } from 'components/Spinner';
+import { useClickOutside } from 'hooks/useClickOutside';
 import { useDebounce } from 'hooks/useDebounce';
 import { IPost, IQuery, SortOrder } from 'interfaces';
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 import { postsApi } from 'services/PostService';
 import { sortByLetters, sortByNumber } from 'utils';
 import { PaginationGroup } from './PaginationGroup';
-import styles from './styles.module.scss';
 import { Table } from './Table';
 
 export function TablePage() {
 
+  const ref = useRef<HTMLDivElement>(null);
+
   const [state, setState] = useState<IQuery>({
-    limit: 5,
+    limit: 10,
     page: 1,
   });
 
@@ -29,11 +31,18 @@ export function TablePage() {
 
   const debouncedSearchValue = useDebounce(searchValue, 500);
 
+  const clear = () => {
+    setSearchActive(false);
+    setSearchValue('');
+  };
+
+  useClickOutside(ref, searchActive, clear);
+
   const handleSearch = (value: string) => {
     setSearchActive(true);
     const newSearch = posts && [...posts];
     const res = newSearch?.filter(post => post.title.includes(value));
-    if(res) setSearchValues(res);
+    if (res) setSearchValues(res);
   };
 
   const handleClearSearch = () => {
@@ -54,7 +63,9 @@ export function TablePage() {
 
     if (posts && posts.length > 0) {
       let result;
-      sortingKey === 'id' ? result = sortByNumber(sorted, sortingKey, sortOrder) : result = sortByLetters(sorted, sortingKey, sortOrder);
+      sortingKey === 'id'
+        ? result = sortByNumber(sorted, sortingKey, sortOrder)
+        : result = sortByLetters(sorted, sortingKey, sortOrder);
       final.push(...result);
     }
     setSearchActive(true);
@@ -74,19 +85,24 @@ export function TablePage() {
     <div className={ styles.tableContainer }>
       {isLoading ? <Spinner />:
         (<>
-          <div className={ styles.searchGroup }>
-            <SearchBar
-              value={ searchValue }
-              onChange={ handleChange }
-              onClick={ handleSearch }
+          <div ref={ ref }
+            className={ styles.tableWrap }
+          >
+            <div className={ styles.searchGroup }>
+              <SearchBar
+                value={  searchValue  }
+                onChange={ handleChange }
+                onClick={ handleSearch }
+              />
+              <Button onClick={ handleClearSearch } > Очистить</Button>
+            </div>
+
+            <Table
+              sort={ sortedData }
+              data={ searchActive ? searchValues : (posts || []) }
             />
-            <Button onClick={ handleClearSearch } > Очистить</Button>
           </div>
 
-          <Table
-            sort={ sortedData }
-            data={ searchActive ? searchValues :  (posts || []) }
-          />
           <PaginationGroup
             pageState={ state }
             total={ postsAll ? postsAll.length / state.limit : 1 }

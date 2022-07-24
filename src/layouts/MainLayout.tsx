@@ -4,8 +4,10 @@ interface IMainLayout extends React.HTMLAttributes<HTMLElement> {}
 
 export default function MainLayout({ children }: IMainLayout) {
   return (
-    <div className={ styles.container } >
-      { children}
+    <div className={ styles.mainLayout }>
+      <div className={ styles.container } >
+        { children}
+      </div>
     </div>
   );
 }

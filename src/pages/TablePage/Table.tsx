@@ -55,7 +55,13 @@ export function Table({ data, sort }: ITable) {
             </TData>
           </TRow>
         )) : (
-            <ErrorMessage message='Нет результатов по вашему запросу' />
+            <TRow>
+              <TData> </TData>
+              <TData> </TData>
+              <TData>
+                <ErrorMessage message={ `Нет результатов по вашему запросу ` } />
+              </TData>
+            </TRow>
         )}
       </TBody>
     </TTable>

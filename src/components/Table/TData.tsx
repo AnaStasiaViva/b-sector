@@ -1,9 +1,11 @@
 
-interface TDataProps extends React.HTMLAttributes<HTMLElement> {}
+interface TDataProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: string
+}
 
 export function TData({ children }: TDataProps) {
   return (
-    <td>
+    <td >
       { children }
     </td>
   );

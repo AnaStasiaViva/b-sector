@@ -1,6 +1,8 @@
 import { TRow } from "./TRow";
 
-interface THeadProps extends React.HTMLAttributes<HTMLElement> {}
+interface THeadProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: string
+}
 
 export function THead({ children }: THeadProps) {
   return (

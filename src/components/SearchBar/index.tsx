@@ -21,7 +21,7 @@ export function SearchBar({ value, onChange, onClick}: ISearchBar) {
       />
       <Button
         variant='search'
-        disabled={ value === '' && true }
+        disabled={ value === '' }
         onClick={ () =>  onClick(value) }
       />
     </div>

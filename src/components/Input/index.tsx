@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 import styles from './styles.module.scss';
-import { join } from '../../utils/';
+import { join } from 'utils';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 

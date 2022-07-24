@@ -1,5 +1,5 @@
 import { HTMLAttributes, MouseEvent } from 'react';
-import { join } from '../../utils/';
+import { join } from 'utils';
 import styles from './styles.module.scss';
 
 interface ButtonProps extends HTMLAttributes<HTMLElement> {

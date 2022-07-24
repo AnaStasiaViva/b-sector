@@ -1,9 +1,11 @@
 
-interface TBodyProps extends React.HTMLAttributes<HTMLElement> {}
+interface TBodyProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: string
+}
 
 export function TBody({children}: TBodyProps) {
   return (
-    <tbody>
+    <tbody >
       { children }
     </tbody>
   );

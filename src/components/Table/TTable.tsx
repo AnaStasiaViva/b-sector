@@ -1,11 +1,13 @@
 import styles from './styles.module.scss';
 
-interface TTableProps extends React.HTMLAttributes<HTMLElement> {}
+interface TTableProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: string
+}
 
 export function TTable({ children }: TTableProps) {
   return (
-    <table className={ styles.table }>
+    <div className={ styles.table }>
       { children }
-    </table>
+    </div>
   );
 }
