@@ -7,6 +7,10 @@
   background: $tertiary-color;
   position: relative;
 
+  display: grid;
+  grid-template-columns: 1fr 45px;
+
+
   @media(max-width: 850px){
     max-height: 45px;
    }
