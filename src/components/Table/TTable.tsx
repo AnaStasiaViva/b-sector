@@ -7,7 +7,9 @@ interface TTableProps extends React.HTMLAttributes<HTMLElement> {
 export function TTable({ children }: TTableProps) {
   return (
     <div className={ styles.table }>
-      { children }
+      <table>
+        { children }
+      </table>
     </div>
   );
 }

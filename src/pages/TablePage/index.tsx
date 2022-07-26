@@ -3,18 +3,15 @@ import { ErrorMessage } from 'components';
 import { Button } from 'components/Button';
 import { SearchBar } from 'components/SearchBar';
 import { Spinner } from 'components/Spinner';
-import { useClickOutside } from 'hooks/useClickOutside';
 import { useDebounce } from 'hooks/useDebounce';
 import { IPost, IQuery, SortOrder } from 'interfaces';
-import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { postsApi } from 'services/PostService';
 import { sortByLetters, sortByNumber } from 'utils';
-import { PaginationGroup } from './PaginationGroup';
 import { Table } from './Table';
+import PaginationGroup from './PaginationGroup';
 
 export function TablePage() {
-
-  const ref = useRef<HTMLDivElement>(null);
 
   const [state, setState] = useState<IQuery>({
     limit: 10,
@@ -31,16 +28,15 @@ export function TablePage() {
 
   const debouncedSearchValue = useDebounce(searchValue, 500);
 
-  const clear = () => {
-    setSearchActive(false);
-    setSearchValue('');
-  };
-
-  useClickOutside(ref, searchActive, clear);
-
   const handleSearch = (value: string) => {
     setSearchActive(true);
-    const newSearch = posts && [...posts];
+
+    setState((prev) => ({
+      ...prev,
+      page: 1
+    }));
+
+    const newSearch = postsAll && [...postsAll];
     const res = newSearch?.filter(post => post.title.includes(value));
     if (res) setSearchValues(res);
   };
@@ -57,23 +53,37 @@ export function TablePage() {
 
   const sortedData = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    setSearchActive(true);
+
+    setState((prev) => ({
+      ...prev,
+      page: 1
+    }));
+
     const sortingKey = (e.target as HTMLElement).id;
-    const sorted = posts ? [...posts] : [];
+    const sorted = searchValue !== '' && searchValues.length > 0
+      ? [...searchValues]
+      : (postsAll && [...postsAll]);
     const final = [];
 
-    if (posts && posts.length > 0) {
+    if (sorted && sorted.length > 0) {
       let result;
       sortingKey === 'id'
         ? result = sortByNumber(sorted, sortingKey, sortOrder)
         : result = sortByLetters(sorted, sortingKey, sortOrder);
       final.push(...result);
     }
-    setSearchActive(true);
+
     setSearchValues(final);
     sortOrder === 'asn' ? setSortOrder('desc') : setSortOrder('asn');
 
     return final;
   };
+
+
+  const paginationTotalCount = searchActive && postsAll
+    ? (1)
+    : (postsAll ? Math.ceil(postsAll.length / state.limit) : 1);
 
 
   useEffect(() => {
@@ -85,7 +95,7 @@ export function TablePage() {
     <div className={ styles.tableContainer }>
       {isLoading ? <Spinner />:
         (<>
-          <div ref={ ref }
+          <div
             className={ styles.tableWrap }
           >
             <div className={ styles.searchGroup }>
@@ -105,7 +115,7 @@ export function TablePage() {
 
           <PaginationGroup
             pageState={ state }
-            total={ postsAll ? postsAll.length / state.limit : 1 }
+            total={ paginationTotalCount }
             data={ searchActive ? searchValues :  (posts || []) }
             onChange={ setState }
           />

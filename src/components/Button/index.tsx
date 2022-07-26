@@ -5,10 +5,10 @@ import styles from './styles.module.scss';
 interface ButtonProps extends HTMLAttributes<HTMLElement> {
   value?: string | number,
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
-  variant?: string | undefined;
-  color?: string | undefined;
+  variant?: string;
+  color?: string ;
   loading?: boolean;
-  className?: string | undefined;
+  className?: string;
   disabled?: boolean
 }
 

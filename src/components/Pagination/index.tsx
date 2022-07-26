@@ -1,5 +1,3 @@
-
-import { IPageLimit } from "interfaces";
 import { MouseEvent } from "react";
 import { PaginationItem } from "./PaginationItem";
 import styles from './styles.module.scss';
@@ -7,16 +5,14 @@ import styles from './styles.module.scss';
 interface IPagination {
   onClick: (e: MouseEvent<HTMLElement>) => void,
   current: number,
-  limit: IPageLimit
   total: number[]
 }
 
-export function Pagination({ onClick, current, limit, total }: IPagination) {
+export function Pagination({ onClick, current, total }: IPagination) {
 
   return (
     <div className={ styles.paginationWrapper }>
-      {total && total.length > 1 && total.map(page => {
-        if (page < limit.max + 1 && page > limit.min) {
+      {total && total.length >= 1 && total.map(page => {
           return (
             <PaginationItem
               key={ page }
@@ -25,8 +21,8 @@ export function Pagination({ onClick, current, limit, total }: IPagination) {
               onClick={ (e) =>  onClick(e) }
             />
            );
-         }
-      })}
+       })
+      }
     </div>
   );
 }
